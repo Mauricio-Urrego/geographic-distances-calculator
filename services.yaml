@@ -1,0 +1,16 @@
+services:
+  Mauriciourrego\Distance\CsvFileHandlerInterface:
+    class: Mauriciourrego\Distance\CsvFileHandler
+
+  Mauriciourrego\Distance\DistanceCalculatorInterface:
+    class: Mauriciourrego\Distance\HaversineDistanceCalculator
+
+  Mauriciourrego\Distance\GeoCodeInterface:
+    class: Mauriciourrego\Distance\PositionStackGeoCode
+
+  Mauriciourrego\Distance\CalculateDistancesFromCsvInterface:
+    class: Mauriciourrego\Distance\CalculateDistancesFromCsv
+    arguments:
+      - '@Mauriciourrego\Distance\CsvFileHandlerInterface'
+      - '@Mauriciourrego\Distance\DistanceCalculatorInterface'
+      - '@Mauriciourrego\Distance\GeoCodeInterface'
